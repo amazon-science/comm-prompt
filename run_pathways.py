@@ -33,6 +33,7 @@ def call_chat_gpt(messages, model='gpt-3.5-turbo', stop=None, temperature=0.,max
             )
             return ans
         except (openai.error.ServiceUnavailableError, openai.error.RateLimitError, openai.error.APIError) as e:
+            print(e)
             time.sleep(min(wait, 60))
             wait *= 2
 
